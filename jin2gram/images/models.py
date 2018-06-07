@@ -28,11 +28,11 @@ class Comment(TimeStampModel):
     
     message = models.TextField()
     creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True)
-    img = models.ForeignKey(Image, on_delete=models.CASCADE, null=True)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE, null=True)
 
 class Like(TimeStampModel):
 
     """ Like Model"""
 
     creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True)
-    img = models.ForeignKey(Image, on_delete=models.CASCADE, null=True)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE, null=True)
