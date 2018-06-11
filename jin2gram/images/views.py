@@ -14,7 +14,10 @@ class ListAllComments(APIView):
 
     def get(self, request, format=None):
 
-        all_comments = models.Comment.objects.all()
+        user_id = request.user.id
+
+        # all_comments = models.Comment.objects.all()
+        all_comments = models.Comment.objects.filter(creator=user_id)
         serializer = serializers.CommentSerializer(all_comments, many=True)
         return Response(data=serializer.data)
 
