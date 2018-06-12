@@ -1,11 +1,27 @@
 from rest_framework import serializers
 from . import models
+from jin2gram.users import models as users_model
+
+class FeedUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = users_model.User
+        fields = (
+            'name',
+            'profile_image'
+        )
 
 class CommentSerializer(serializers.ModelSerializer):
 
+    creator = FeedUserSerializer()
+
     class Meta:
         model = models.Comment
-        fields = '__all__'
+        fields = (
+            'id',
+            'message',
+            'creator',
+        )
 
 
 class LikeSerializer(serializers.ModelSerializer):
@@ -18,7 +34,7 @@ class LikeSerializer(serializers.ModelSerializer):
 class ImageSerializer(serializers.ModelSerializer):
 
     comments = CommentSerializer(many=True)
-    likes = LikeSerializer(many=True)
+    creator = FeedUserSerializer()
 
     class Meta:
         model = models.Image
@@ -28,5 +44,6 @@ class ImageSerializer(serializers.ModelSerializer):
             'location',
             'caption',
             'comments',
-            'likes'
+            'likes_count',
+            'creator'
         )
