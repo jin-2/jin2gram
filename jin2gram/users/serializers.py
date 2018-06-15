@@ -3,7 +3,7 @@ from . import models
 from jin2gram.images import serializers as image_serializer
 
 
-class ExploreUserSerializer(serializers.ModelSerializer):
+class ListUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.User
