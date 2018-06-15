@@ -28,8 +28,17 @@ class User(AbstractUser):
     followers = models.ManyToManyField("self", blank=True)
     following = models.ManyToManyField("self", blank=True)
 
+    @property
+    def post_count(self):
+        return self.images.all().count()
+
+    @property
+    def follower_count(self):
+        return self.followers.all().count()
+
+    @property
+    def following_count(self):
+        return self.following.all().count()
+
     def __str__(self):
         return self.username
-
-    def get_absolute_url(self):
-        return reverse("users:detail", kwargs={"username": self.username})
