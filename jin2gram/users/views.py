@@ -31,4 +31,18 @@ class FollowUsers(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
 
+class UnFollowUsers(APIView):
+
+    def post(self, request, user_id, format=None):
+
+        user = request.user
+
+        try:
+            follow_to_user = models.User.objects.get(id=user_id)
+            user.following.remove(follow_to_user)
+            user.save()
+            return Response(status=status.HTTP_200_OK)
+
+        except models.User.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
