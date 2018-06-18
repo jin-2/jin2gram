@@ -72,6 +72,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'jin2gram.users.apps.UsersConfig',
     'jin2gram.images.apps.ImagesConfig',
+    'jin2gram.notifications.apps.NotificationsConfig',
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
