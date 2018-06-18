@@ -2,7 +2,8 @@ from django.db import models
 from jin2gram.users import models as user_models
 from jin2gram.images import models as image_models
 
-class Notification(models.Model):
+
+class Notification(image_models.TimeStampModel):
 
     NOTIFICATION_TYPE = {
         # 첫번째는 데이터베이스, 두번째는 어드민 패널을 위해 쓰임
