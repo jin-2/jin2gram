@@ -13,6 +13,11 @@ class ImageAdmin(admin.ModelAdmin):
         'location',
         'creator'
     )
+
+    list_display_links = [
+        'location',
+        'caption'
+    ]
     
     list_display = (
         'file',

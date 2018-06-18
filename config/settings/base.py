@@ -67,6 +67,7 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
+    'taggit', # tags for the photo
 ]
 LOCAL_APPS = [
     'jin2gram.users.apps.UsersConfig',
@@ -238,3 +239,5 @@ SOCIALACCOUNT_ADAPTER = 'jin2gram.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+# 대소문자 구분 안함
+TAGGIT_CASE_INSENSITIVE = True

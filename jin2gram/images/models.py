@@ -1,4 +1,5 @@
 from django.db import models
+from taggit.managers import TaggableManager
 from jin2gram.users import models as user_models
 
 # Create your models here.
@@ -19,6 +20,7 @@ class Image(TimeStampModel):
     location = models.CharField(max_length=140)
     caption = models.TextField()
     creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True, related_name='images')
+    tags = TaggableManager()
 
     # Like 모델에 대한 attribute
     @property
