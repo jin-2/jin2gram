@@ -91,6 +91,43 @@ request.user
 request.query_params
 ```
 
+### 10. Deep relationship 검색하는 방법
+
+```python
+title: 'hello',
+location: 'bogota',
+creator: (
+    User:
+        id: 1,
+        username: 'jin2'
+)
+
+models.Images.objects.filter(location='bogota')
+models.Images.objects.filter(creator__username='jin2') # Search deep relationship
+```
+
+#### [Field lookups](https://docs.djangoproject.com/en/1.11/topics/db/queries/#field-lookups)
+
+```python
+# jin으로 정확히 일치
+models.Images.objects.filter(creator__username__exact='jin')
+
+# 대소문자 구분없이 jin, Jin으로 일치
+models.Images.objects.filter(creator__username__iexact='jin')
+
+# jin이 포함되어 있으면
+models.Images.objects.filter(creator__username__contains='jin')
+
+# 대소문자 구분없이 jin이 포함되어 있으면
+models.Images.objects.filter(creator__username__icontains='jin')
+```
+
+### 11. [QuerySet API reference: distinct()](https://docs.djangoproject.com/en/2.0/ref/models/querysets/#distinct)
+중복된 데이터를 제거한다.
+
+```python
+image_list = models.Image.objects.filter(tags__name__in=hashtag_array).distinct()
+```
 
 ## Link
 - [정규표현식 학습](https://regexone.com/)
