@@ -2,11 +2,11 @@ from django.db import models
 from taggit.managers import TaggableManager
 from jin2gram.users import models as user_models
 
-# Create your models here.
+
 class TimeStampModel(models.Model):
 
-    created_at = models.DateTimeField(auto_now_add=True, null=True)
-    updated_at = models.DateTimeField(auto_now=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True
@@ -40,6 +40,7 @@ class Image(TimeStampModel):
         # DB에서 얻은 리스트를 생성된 날짜로 정렬할 수 있게
         ordering = ['-created_at']
 
+
 class Comment(TimeStampModel):
 
     """Comment Model"""
@@ -50,6 +51,7 @@ class Comment(TimeStampModel):
 
     def __str__(self):
         return self.message
+
 
 class Like(TimeStampModel):
 
