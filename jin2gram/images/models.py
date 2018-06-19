@@ -5,10 +5,10 @@ from jin2gram.users import models as user_models
 # Create your models here.
 class TimeStampModel(models.Model):
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
 
-    class meta:
+    class Meta:
         abstract = True
 
 
