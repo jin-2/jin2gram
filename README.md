@@ -1,4 +1,5 @@
 # Jin2gram
+
 Cloning Instagram with Python Django and React.
 
 ## Note
@@ -42,10 +43,12 @@ user.following.remove(follow_to_user)
 ```
 
 #### .delete()와 .remove()의 차이점
+
 `.delete()` deletes an object from the database. 
 `.remove()` deletes the many to many relationship between models.
 
 ### 6. Serializer에서 many=True
+
 다수의 데이터 queryset 형태를 serializer화 하고자 할 때 사용한다.
 
 ```python
@@ -73,6 +76,7 @@ def FollowUsers(request, user_id):
 ```
 
 ### 8. Customizing Admin page
+
 Admin > Image 목록에서 이미지 수정링크를 다른 필드에도 적용시킬 때 아래와 같이 옵션을 추가한다.
 
 ```python
@@ -123,6 +127,7 @@ models.Images.objects.filter(creator__username__icontains='jin')
 ```
 
 ### 11. [QuerySet API reference: distinct()](https://docs.djangoproject.com/en/2.0/ref/models/querysets/#distinct)
+
 중복된 데이터를 제거한다.
 
 ```python
@@ -150,6 +155,26 @@ def 함수명(매개변수):
     <수행할 문장1>
     <수행할 문장2>
     ...
+```
+
+### 15. [QuerySet API reference: values()](https://docs.djangoproject.com/en/1.11/ref/models/querysets/#values)
+
+Django document example
+
+```python
+>>> Blog.objects.values()
+<QuerySet [{'id': 1, 'name': 'Beatles Blog', 'tagline': 'All the latest Beatles news.'}]>
+>>> Blog.objects.values('id', 'name')
+<QuerySet [{'id': 1, 'name': 'Beatles Blog'}]>
+```
+
+작성했던 코드
+
+```python
+likes = models.Like.objects.filter(img__id=image_id)
+
+# likes 리스트에서 craator_id만 추출하여 리스트를 뽑을 수 있다.
+like_creator_ids = likes.values('creator_id')
 ```
 
 ## Link

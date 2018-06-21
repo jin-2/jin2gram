@@ -2,6 +2,8 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from . import models, serializers
+from jin2gram.users import models as user_models
+from jin2gram.users import serializers as user_serializers
 from jin2gram.notifications import views as notification_views
 
 class Feed(APIView):
@@ -41,7 +43,18 @@ def get_key(image):
     return image.created_at
 
 class LikeImage(APIView):
-    
+
+    def get(self, request, image_id, format=None):
+
+        likes = models.Like.objects.filter(img__id=image_id)
+        like_creator_ids = likes.values('creator_id')
+        users = user_models.User.objects.filter(id__in=like_creator_ids)
+
+        serializer = user_serializers.ListUserSerializer(users, many=True)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+
     def post(self, request, image_id, format=None):
 
         user = request.user
