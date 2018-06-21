@@ -106,7 +106,8 @@ class CommentImage(APIView):
                 creator=user,
                 img=found_image
             )
-            notification_views.create_notification(user, found_image.creator, 'comment', found_image, request.data['message'])
+            # notification_views.create_notification(user, found_image.creator, 'comment', found_image, request.data['message'])
+            notification_views.create_notification(user, found_image.creator, 'comment', found_image, serializer.data['message'])
             return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
         else:
@@ -125,6 +126,23 @@ class Comment(APIView):
 
         except models.Comment.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+class ModerateComment(APIView):
+    
+    # 내가 업로드한 이미지에 달린 댓글을 삭제할 때
+    def delete(self, request, image_id, comment_id, format=None):
+
+        user = request.user
+        
+        try:
+            delete_comment = models.Comment.objects.get(id=comment_id, img__id=image_id, img__creator=user)
+            delete_comment.delete()
+
+        except models.Comment.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class Search(APIView):
