@@ -2,6 +2,7 @@ from rest_framework import serializers
 from . import models
 from jin2gram.users import models as users_model
 
+
 class FeedUserSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -58,4 +59,14 @@ class UserProfileImageSerializer(serializers.ModelSerializer):
             'file',
             'likes_count',
             'comments_count',
+        )
+
+
+class SmallImage(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Image
+        fields = (
+            'id',
+            'file'
         )
