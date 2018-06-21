@@ -129,6 +129,30 @@ models.Images.objects.filter(creator__username__icontains='jin')
 image_list = models.Image.objects.filter(tags__name__in=hashtag_array).distinct()
 ```
 
+### 12. Django Migration
+
+- [05) 마이그레이션 파일 제거](https://wikidocs.net/9926)
+- [Django 기본 05 - Migration](https://wayhome25.github.io/django/2017/03/20/django-ep6-migrations/)
+
+### 13. 데이터 베이스 추가와 삭제 명령어
+
+```terminal
+CREATE DATABASE AAA;
+DROP DATABASE AAA;
+```
+
+### 14. Python의 함수
+
+[파이썬 함수의 구조](https://wikidocs.net/24)
+
+```python
+def 함수명(매개변수):
+    <수행할 문장1>
+    <수행할 문장2>
+    ...
+```
+
 ## Link
+
 - [정규표현식 학습](https://regexone.com/)
 - [django-taggit: hashtag를 쉽게 적용하기 위해](https://github.com/alex/django-taggit)

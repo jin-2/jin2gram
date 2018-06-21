@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from . import models, serializers
+from jin2gram.notifications import views as notification_views
 
 
 class ExploreUsers(APIView):
@@ -25,6 +26,9 @@ class FollowUsers(APIView):
             follow_to_user = models.User.objects.get(id=user_id)
             user.following.add(follow_to_user)
             user.save()
+
+            notification_views.create_notification(user, follow_to_user, 'follow')
+
             return Response(status=status.HTTP_201_CREATED)
         
         except models.User.DoesNotExist:

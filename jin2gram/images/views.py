@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from . import models, serializers
+from jin2gram.notifications import views as notification_views
 
 class Feed(APIView):
     
@@ -56,6 +57,8 @@ class LikeImage(APIView):
                 img=found_image
             )
             new_like.save()
+            notification_views.create_notification(user, found_image.creator, 'like', found_image)
+            
             return Response(status=status.HTTP_201_CREATED)
 
 
@@ -99,11 +102,11 @@ class CommentImage(APIView):
         serializer = serializers.CommentSerializer(data=request.data)
 
         if serializer.is_valid():
-            print('OK!! COOL!!')
             serializer.save(
                 creator=user,
                 img=found_image
             )
+            notification_views.create_notification(user, found_image.creator, 'comment', found_image, request.data['message'])
             return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
         else:
