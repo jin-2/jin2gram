@@ -13,6 +13,7 @@ class Feed(APIView):
 
         image_list = []
 
+        # 내가 follow하는 사람들의 이미지
         for following_users in following_users:
 
             # 2개의 이미지만 가져온다
@@ -20,6 +21,12 @@ class Feed(APIView):
 
             for image in user_image:
                 image_list.append(image)
+
+        # 내가 올린 이미지
+        my_images = user.images.all()[:2]
+
+        for image in my_images:
+            image_list.append(image)
 
         # sorted_list = sorted(image_list, key=get_key, reverse=True)
 
