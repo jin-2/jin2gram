@@ -173,9 +173,38 @@ Django document example
 ```python
 likes = models.Like.objects.filter(img__id=image_id)
 
-# likes 리스트에서 craator_id만 추출하여 리스트를 뽑을 수 있다.
+# likes 리스트에서 creator_id만 추출하여 리스트를 뽑을 수 있다.
 like_creator_ids = likes.values('creator_id')
 ```
+
+### 16. 부분 수정(put)할 때 필드 처리
+
+#### [Serializers: Partial updates](http://www.django-rest-framework.org/api-guide/serializers/#partial-updates)
+
+serializer 파일에서 옵션 처리
+
+```python
+file = serializers.fileField(required=false)
+```
+
+view 파일에서 옵션 처리
+
+```python
+serializer = serializers.InputImageSerializer(image, data=request.data, patial=True)
+```
+
+### 17. `serializer.is_valid()`
+
+[Django REST Framework - Serializers](http://brownbears.tistory.com/71)
+
+serializer는 받은 데이터의 유효성을 검사한 다음, 복잡한 타입으로 형변환을 할 수 있도록 serialization을 제공한다.
+
+```python
+serializer.is_valid()
+serializer.errors
+```
+
+데이터를 사용하기 전에 `is_valid()` 함수를 호출해야 한다. 만약 validation error가 발생한다면, `.errors` 속성을 사용해 에러를 확인할 수 있다.
 
 ## Link
 
