@@ -206,6 +206,14 @@ serializer.errors
 
 데이터를 사용하기 전에 `is_valid()` 함수를 호출해야 한다. 만약 validation error가 발생한다면, `.errors` 속성을 사용해 에러를 확인할 수 있다.
 
+### 18. [Serializer fields: ReadOnlyField Documentations](http://www.django-rest-framework.org/api-guide/fields/#readonlyfield)
+
+읽기 전용 필드로 모델 인스턴스를 업데이트할 때 사용할 수 없다.
+
+```python
+post_count = serializer.ReadOnlyField()
+```
+
 ## Link
 
 - [정규표현식 학습](https://regexone.com/)
