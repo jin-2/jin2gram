@@ -68,6 +68,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',
     'rest_framework',
     'taggit', # tags for the photo
+    'taggit_serializer', # tag serializer
 ]
 LOCAL_APPS = [
     'jin2gram.users.apps.UsersConfig',
