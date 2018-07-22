@@ -214,6 +214,27 @@ serializer.errors
 post_count = serializer.ReadOnlyField()
 ```
 
+### 19. [REST framework JWT Auth](http://getblimp.github.io/django-rest-framework-jwt/)
+
+```python
+pipenv install djangorestframework-jwt
+```
+
+base.py 하단에 아래 내용 추가
+
+```python
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+```
+
 ## Link
 
 - [정규표현식 학습](https://regexone.com/)
