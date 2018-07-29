@@ -6,7 +6,7 @@ from jin2gram.users import models as user_models
 from jin2gram.users import serializers as user_serializers
 from jin2gram.notifications import views as notification_views
 
-class Feed(APIView):
+class Images(APIView):
     
     def get(self, request, format=None):
 
@@ -38,6 +38,19 @@ class Feed(APIView):
         serializer = serializers.ImageSerializer(sorted_list, many=True)
 
         return Response(serializer.data)
+
+    def post(self, request, format=None):
+
+        user = request.user
+        serializer = serializers.InputImageSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save(creator=user)
+            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+        
+        else:
+            return Response(data=serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
 
 def get_key(image):
     return image.created_at
