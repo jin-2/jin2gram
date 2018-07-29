@@ -239,6 +239,14 @@ REST_FRAMEWORK = {
 
 로그인, 로그아웃, 회원가입에 필요한 인증 라이브러리
 
+### 21. [Django Rest Auth: Social Authentication facebook](http://django-rest-auth.readthedocs.io/en/latest/installation.html#facebook)
+
+- base.py의 THIRD_PARTY_APPS에 추가 `allauth.socialaccount.providers.facebook`
+- users 모델에 class, url 추가
+- Facebook developers에서 app 등록(Add ID, Secret key 생성)
+- Admin 페이지에서 Social application 추가(Add ID, Secret key 입력)
+- [Test access_token](https://developers.facebook.com/tools/accesstoken/)을 이용하여 로그인
+
 ## Link
 
 - [정규표현식 학습](https://regexone.com/)
