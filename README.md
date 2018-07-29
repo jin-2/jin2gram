@@ -235,6 +235,10 @@ REST_FRAMEWORK = {
 }
 ```
 
+### 20. [Django Rest Auth Documentation](http://django-rest-auth.readthedocs.io/en/latest/)
+
+로그인, 로그아웃, 회원가입에 필요한 인증 라이브러리
+
 ## Link
 
 - [정규표현식 학습](https://regexone.com/)
