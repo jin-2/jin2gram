@@ -71,8 +71,8 @@ module.exports = {
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
       path
-      .relative(paths.appSrc, info.absoluteResourcePath)
-      .replace(/\\/g, '/'),
+        .relative(paths.appSrc, info.absoluteResourcePath)
+        .replace(/\\/g, '/'),
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
@@ -124,7 +124,7 @@ module.exports = {
 
           },
           loader: require.resolve('eslint-loader'),
-        }, ],
+        },],
         include: paths.appSrc,
       },
       {
@@ -168,49 +168,51 @@ module.exports = {
             test: /\.(css|scss|sass)$/,
             loader: ExtractTextPlugin.extract(
               Object.assign({
-                  fallback: {
-                    loader: require.resolve('style-loader'),
-                    options: {
-                      hmr: false,
-                    },
+                fallback: {
+                  loader: require.resolve('style-loader'),
+                  options: {
+                    hmr: false,
                   },
-                  use: [{
-                      loader: require.resolve('css-loader'),
-                      options: {
-                        importLoaders: 1,
-                        minimize: true,
-                        sourceMap: shouldUseSourceMap,
-                      },
-                    },
-                    {
-                      loader: require.resolve('postcss-loader'),
-                      options: {
-                        // Necessary for external CSS imports to work
-                        // https://github.com/facebookincubator/create-react-app/issues/2677
-                        ident: 'postcss',
-                        plugins: () => [
-                          require('postcss-flexbugs-fixes'),
-                          autoprefixer({
-                            browsers: [
-                              '>1%',
-                              'last 4 versions',
-                              'Firefox ESR',
-                              'not ie < 9', // React doesn't support IE8 anyway
-                            ],
-                            flexbox: 'no-2009',
-                          }),
-                        ],
-                        sourceMap: true
-                      },
-                    },
-                    {
-                      loader: require.resolve('sass-loader'),
-                      options: {
-                        sourceMap: true
-                      }
-                    },
-                  ],
                 },
+                use: [{
+                  loader: require.resolve('css-loader'),
+                  options: {
+                    importLoaders: 1,
+                    minimize: true,
+                    modules: true,
+                    localIdentName: "[name]__[local]---[hash:base64:5]",
+                    sourceMap: shouldUseSourceMap,
+                  },
+                },
+                {
+                  loader: require.resolve('postcss-loader'),
+                  options: {
+                    // Necessary for external CSS imports to work
+                    // https://github.com/facebookincubator/create-react-app/issues/2677
+                    ident: 'postcss',
+                    plugins: () => [
+                      require('postcss-flexbugs-fixes'),
+                      autoprefixer({
+                        browsers: [
+                          '>1%',
+                          'last 4 versions',
+                          'Firefox ESR',
+                          'not ie < 9', // React doesn't support IE8 anyway
+                        ],
+                        flexbox: 'no-2009',
+                      }),
+                    ],
+                    sourceMap: true
+                  },
+                },
+                {
+                  loader: require.resolve('sass-loader'),
+                  options: {
+                    sourceMap: true
+                  }
+                },
+                ],
+              },
                 extractTextPluginOptions
               )
             ),

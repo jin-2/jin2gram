@@ -117,7 +117,7 @@ module.exports = {
 
           },
           loader: require.resolve('eslint-loader'),
-        }, ],
+        },],
         include: paths.appSrc,
       },
       {
@@ -162,6 +162,8 @@ module.exports = {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
+                  modules: true,
+                  localIdentName: "[name]__[local]--[hash:base64:5]",
                 },
               },
               {
