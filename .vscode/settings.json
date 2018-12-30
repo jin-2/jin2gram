@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "/Users/isujin/.local/share/virtualenvs/nomad--a02p0lK/bin/python"
+    "python.pythonPath": "/Users/isujin/.local/share/virtualenvs/nomad--a02p0lK/bin/python",
+    "python.jediEnabled": false,
+    "python.linting.pylintEnabled": true
 }
