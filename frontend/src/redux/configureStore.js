@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux';
-import users from 'redux/modules/users';
+import users from './modules/users';
 
 const reducer = combineReducers({
     users,
