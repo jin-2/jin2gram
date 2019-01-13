@@ -5,6 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import './index.css';
 import App from './App';
 import store, { history } from './redux/configureStore';
+import './ReactotronConfig';
 
 store.dispatch({ type: 'shot' });
 
