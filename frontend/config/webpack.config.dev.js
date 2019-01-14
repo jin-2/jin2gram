@@ -190,7 +190,8 @@ module.exports = {
               {
                 loader: require.resolve('sass-loader'),
                 options: {
-                  sourcemap: true
+                  sourcemap: true,
+                  data: `@import "${paths.appSrc}/config/variables.scss";`
                 }
               },
             ],
