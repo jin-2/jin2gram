@@ -5,6 +5,7 @@ import logger from 'redux-logger';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import createHistory from 'history/createBrowserHistory';
 import Reactotron from '../ReactotronConfig';
+import { i18nState } from "redux-i18n"
 
 const env = process.env.NODE_ENV;
 
@@ -19,6 +20,7 @@ if (env === 'development') {
 const reducer = combineReducers({
     router: connectRouter(history),
     users,
+    i18nState,
 });
 
 let configureStore;
