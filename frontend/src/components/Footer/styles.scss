@@ -2,17 +2,33 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
-    width: $page-max-width;
+    flex-wrap: wrap;
+    margin: 55px auto;
+    max-width: $page-max-width;
+    font-size: $small-font;
+    
+    @include breakpoint(mobileonly) {
+        justify-content: center;
+    }
 }
 
 .footer-list {
     display: flex;
+    flex-wrap: wrap;
     color: $dark-blue;
+
+    @include breakpoint(mobileonly) {
+        justify-content: center;
+    }
 }
 
 .footer-item {
     margin-right: 16px;
+    cursor: pointer;
+    
+    @include breakpoint(mobileonly) {
+        margin-bottom: 15px;
+    }
 }
 
 .footer-copy {
