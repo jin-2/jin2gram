@@ -1,7 +1,20 @@
 .footer {
-    background: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: $page-max-width;
+}
+
+.footer-list {
+    display: flex;
+    color: $dark-blue;
 }
 
 .footer-item {
-    color: #fff;
+    margin-right: 16px;
+}
+
+.footer-copy {
+    color: $dark-grey;
 }
