@@ -1,7 +1,9 @@
 import React from "react";
 import { Route, Switch } from 'react-router-dom';
-import styles from "./styles.scss";
-import Footer from '../Footer'
+import PropTypes from 'prop-types';
+import "./styles.scss";
+import Footer from '../Footer';
+import Auth from '../Auth';
 
 const App = props => [
     props.isLoggedIn ? <PrivateRoutes key={2} /> : <PubulicRoutes key={2} />,
@@ -17,9 +19,13 @@ const PrivateRoutes = () => (
 
 const PubulicRoutes = () => (
     <Switch>
-        <Route exact path="/" render={() => "login"} />
+        <Route exact path="/" component={Auth} />
         <Route path="/forgot" render={() => "forgot"} />
     </Switch>
 )
+
+App.propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
+};
 
 export default App;
