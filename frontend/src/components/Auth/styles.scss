@@ -1,0 +1,57 @@
+.page-intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: {
+        top: 40px;
+        bottom: 40px;
+    }
+}
+.visual {
+    margin: {
+        left: 14px;
+        right: 14px;
+    }
+    max-width: 369px;
+}
+.contents {
+    margin: {
+        left: 14px;
+        right: 14px;
+    }
+    max-width: 350px;
+}
+.form {
+    padding: 40px 30px;
+    @include boxBorder(no);
+}
+.box {
+    margin-top: 10px;
+    padding: 30px 40px;
+    text-align: center;
+    @include boxBorder(no);
+}
+.small-title {
+    padding: {
+        top: 20px;
+        bottom: 20px;
+    }
+    text-align: center;
+}
+.store-links {
+    display: flex;
+    justify-content: center;
+
+    .store {
+        flex-basis: 136px;
+    }
+    .store + .store {
+        margin-left: 10px;
+        cursor: pointer;
+    }
+}
+
+.link-text {
+    color: $link-color;
+    cursor: pointer;
+}
