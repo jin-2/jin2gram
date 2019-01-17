@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import { LoginForm, SignupForm } from '../AuthForms'
 
@@ -16,29 +17,33 @@ const Auth = (props, context) => (
             <div className={styles.box}>
                 {props.action === 'login' && (
                     <p>
-                        Don't have an account?{' '}
-                        <span className={styles.linkText} onClick={props.changeAction}>Sign up</span>
+                        {context.t("Don't have an account?")}{' '}
+                        <span className={styles.linkText} onClick={props.changeAction}>{context.t("Sign up")}</span>
                     </p>
                 )}
 
                 {props.action === 'signup' && (
                     <p>
-                        Have an account?{' '}
-                        <span className={styles.linkText} onClick={props.changeAction}>Log in</span>
+                        {context.t("Have an account?")}{' '}
+                        <span className={styles.linkText} onClick={props.changeAction}>{context.t("Log in")}</span>
                     </p>
                 )}
             </div>
-            <p className={styles.smallTitle}>Get the App</p>
+            <p className={styles.smallTitle}>{context.t("Get the App")}</p>
             <div className={styles.storeLinks}>
                 <p className={styles.store}>
-                    <img src={require("images/app-store.png")} alt="Download on the App Store" />
+                    <img src={require("images/app-store.png")} alt={context.t("Download on the App Store")} />
                 </p>
                 <p className={styles.store}>
-                    <img src={require("images/google-store.png")} alt="Get it on Google Play" />
+                    <img src={require("images/google-store.png")} alt={context.t("Get it on Google Play")} />
                 </p>
             </div>
         </div>
     </main>
 );
+
+Auth.contextTypes = {
+    t: PropTypes.func.isRequired,
+}
 
 export default Auth;
