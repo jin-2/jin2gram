@@ -1,3 +1,7 @@
+.logo {
+    margin-bottom: 10px;
+    text-align: center;
+}
 .page-intro {
     display: flex;
     justify-content: center;
@@ -6,6 +10,13 @@
         top: 40px;
         bottom: 40px;
     }
+
+    @include breakpoint(mobileonly) {
+        padding: {
+            top: 0;
+            bottom: 0;
+        }
+    }
 }
 .visual {
     margin: {
@@ -13,6 +24,9 @@
         right: 14px;
     }
     max-width: 369px;
+    @include breakpoint(desktop) {
+        display: none;
+    }
 }
 .contents {
     margin: {
@@ -20,16 +34,32 @@
         right: 14px;
     }
     max-width: 350px;
+    @include breakpoint(mobileonly) {
+        margin: {
+            left: 0;
+            right: 0;
+        }
+        max-width: 100%;
+    }
 }
 .form {
     padding: 40px 30px;
     @include boxBorder(no);
+    @include breakpoint(mobileonly) {
+        border: 0;
+        background-color: transparent;
+    }
 }
 .box {
     margin-top: 10px;
     padding: 30px 40px;
     text-align: center;
     @include boxBorder(no);
+
+    @include breakpoint(mobileonly) {
+        border: 0;
+        background-color: transparent;
+    }
 }
 .small-title {
     padding: {

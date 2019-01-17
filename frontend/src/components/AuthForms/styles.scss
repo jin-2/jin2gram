@@ -1,0 +1,97 @@
+.input-field {
+    margin-top: 8px;
+}
+form .input-field:first-child {
+    margin-top: 0;
+}
+.button-wrap {
+    margin-top: 15px;
+}
+.button {
+    @include primaryBtn;
+}
+
+.button-fb {
+    margin-top: 15px;
+    color: #385185;
+    @include textBtn;
+
+    .icon {
+        margin-right: 10px;
+        vertical-align: text-bottom;
+    }
+}
+.forgot {
+    margin-top: 24px;
+    text-align: center;
+    cursor: pointer;
+    font-size: $small-font;
+}
+
+.other-option {
+    position: relative;
+    padding: {
+        top: 20px;
+        bottom: 20px;
+    }
+    color: $dark-grey;
+    text-align: center;
+
+    &::after {
+        content: '';
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: #efefef;
+    }
+
+    .or {
+        z-index: 2;
+        position: relative;
+        padding: {
+            left: 16px;
+            right: 16px;
+        }
+        background-color: #fff;
+
+        @include breakpoint(mobileonly) {
+            background-color: $bg-color;
+        }
+    }
+}
+
+.signup-text {
+    margin: {
+        left: 20px;
+        right: 20px;
+    }
+    color: $dark-grey;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+}
+.button-fb2 {
+    margin-top: 20px;
+    @include primaryBtn;
+
+    .icon {
+        margin-right: 10px;
+        vertical-align: text-bottom;
+    }
+}
+
+.agree-text {
+    margin: 20px 15px 0;
+    color: $dark-grey;
+    text-align: center;
+    line-height: 1.4;
+
+    strong {
+        font-weight: 600;
+    }
+}

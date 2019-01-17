@@ -4,61 +4,65 @@ import IconFb from 'react-ionicons/lib/LogoFacebook'
 import styles from './styles.scss';
 
 export const LoginForm = props => (
-    <div>
+    <div className={styles.loginWrap}>
         <form action="#">
-            <div>
+            <div className={styles.inputField}>
                 <input type="text" name="" id="loginId" placeholder="Phone number, username, or email" />
             </div>
-            <div>
+            <div className={styles.inputField}>
                 <input type="password" name="" id="loginPw" placeholder="Password" />
             </div>
-            <div>
-                <button>Log in</button>
+            <div className={styles.buttonWrap}>
+                <button className={styles.button}>Log in</button>
             </div>
         </form>
         <div>
-            <p>or</p>
-            <button type="button">
-                <IconFb fontSize="20px" color="#fff" />
+            <p className={styles.otherOption}>
+                <span className={styles.or}>OR</span>
+            </p>
+            <button type="button" className={styles.buttonFb}>
+                <IconFb fontSize="20px" color="#385185" className={styles.icon} />
                 Log in with Facebook
             </button>
-            <p>Forgot Password?</p>
+            <p className={styles.forgot}>Forgot Password?</p>
         </div>
     </div>
 );
 
 export const SignupForm = props => (
-    <div>
-        <p>
+    <div className={styles.signupWrap}>
+        <p className={styles.signupText}>
             Sign up to see photos and videos from your friends.
         </p>
-        <button type="button">
-            <IconFb fontSize="20px" color="#385185" />
+        <button type="button" className={styles.buttonFb2}>
+            <IconFb fontSize="20px" color="#fff" className={styles.icon} />
             Log in with Facebook
         </button>
-        <p>OR</p>
+        <p className={styles.otherOption}>
+            <span className={styles.or}>OR</span>
+        </p>
         <form action="#">
-            <div>
+            <div className={styles.inputField}>
                 <input type="text" name="" id="signupId" placeholder="Mobile Number, or Email" />
             </div>
-            <div>
+            <div className={styles.inputField}>
                 <input type="text" name="" id="signupName" placeholder="Full Name" />
             </div>
-            <div>
+            <div className={styles.inputField}>
                 <input type="text" name="" id="signupNick" placeholder="Username" />
             </div>
-            <div>
+            <div className={styles.inputField}>
                 <input type="password" name="" id="signupPw" placeholder="Password" />
             </div>
-            <div>
-                <button type="button">Sign Up</button>
+            <div className={styles.buttonWrap}>
+                <button type="button" className={styles.button}>Sign Up</button>
             </div>
         </form>
-        <p>
+        <p className={styles.agreeText}>
             By signing up, you agree to our
-            <strong>Terms</strong>,
-            <strong>Data Policy</strong> and
-            <strong>Cookies Policy</strong>.
+            &nbsp;<strong>Terms</strong>,
+            &nbsp;<strong>Data Policy</strong> and
+            &nbsp;<strong>Cookies Policy</strong>.
         </p>
     </div>
 );

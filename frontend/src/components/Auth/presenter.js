@@ -9,7 +9,7 @@ const Auth = (props, context) => (
         </div>
         <div className={styles.contents}>
             <div className={styles.form}>
-                <h1><img src={require("images/instagram.png")} alt="Instagram" /></h1>
+                <h1 className={styles.logo}><img src={require("images/instagram.png")} alt="Instagram" /></h1>
                 {props.action === 'login' && <LoginForm />}
                 {props.action === 'signup' && <SignupForm />}
             </div>
