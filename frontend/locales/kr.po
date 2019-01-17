@@ -1,0 +1,117 @@
+msgid ""
+msgstr ""
+"Language: kr"
+
+#: src/components/Auth/presenter.js
+msgid "Don't have an account?"
+msgstr "계정이 없으신가요?"
+
+#: src/components/Auth/presenter.js
+msgid "Sign up"
+msgstr "가입하기"
+
+#: src/components/Auth/presenter.js
+msgid "Have an account?"
+msgstr "계정이 있으신가요?"
+
+#: src/components/Auth/presenter.js
+#: src/components/AuthForms/index.js
+msgid "Log in"
+msgstr "로그인하기"
+
+#: src/components/Auth/presenter.js
+msgid "Get the App"
+msgstr "앱을 다운로드하세요."
+
+#: src/components/Auth/presenter.js
+msgid "Download on the App Store"
+msgstr "앱 스토어에서 다운로드 하기"
+
+#: src/components/Auth/presenter.js
+msgid "Get it on Google Play"
+msgstr "구글 플레이에서 다운로드 하기"
+
+#: src/components/AuthForms/index.js
+msgid "Phone number, username, or email"
+msgstr "핸드폰 번호, 사용자 이름 또는 이메일"
+
+#: src/components/AuthForms/index.js
+msgid "Password"
+msgstr "비밀번호"
+
+#: src/components/AuthForms/index.js
+msgid "OR"
+msgstr "또는"
+
+#: src/components/AuthForms/index.js
+msgid "Log in with Facebook"
+msgstr "페이스북으로 로그인하기"
+
+#: src/components/AuthForms/index.js
+msgid "Forgot Password?"
+msgstr "비밀번호를 잊으셨나요?"
+
+#: src/components/AuthForms/index.js
+msgid "Sign up to see photos and videos from your friends."
+msgstr "친구들의 사진과 비디오를 보려면 가입하세요."
+
+#: src/components/AuthForms/index.js
+msgid "Mobile Number, or Email"
+msgstr "핸드폰 번호 또는 이메일"
+
+#: src/components/AuthForms/index.js
+msgid "Full Name"
+msgstr "성명"
+
+#: src/components/AuthForms/index.js
+msgid "Username"
+msgstr "사용자 이름"
+
+#: src/components/AuthForms/index.js
+msgid "Sign Up"
+msgstr "회원가입 하기"
+
+#: src/components/Footer/index.js
+msgid "About Us"
+msgstr "Instagram 정보"
+
+#: src/components/Footer/index.js
+msgid "Support"
+msgstr "지원"
+
+#: src/components/Footer/index.js
+msgid "Press"
+msgstr "홍보 센터"
+
+#: src/components/Footer/index.js
+msgid "API"
+msgstr "API"
+
+#: src/components/Footer/index.js
+msgid "Jobs"
+msgstr "채용 정보"
+
+#: src/components/Footer/index.js
+msgid "Privacy"
+msgstr "개인정보처리방침"
+
+#: src/components/Footer/index.js
+msgid "Terms"
+msgstr "약관"
+
+#: src/components/Footer/index.js
+msgid "Directory"
+msgstr "디렉터리"
+
+#: src/components/Footer/index.js
+msgid "Profiles"
+msgstr "프로필"
+
+#: src/components/Footer/index.js
+msgid "Hashtag"
+msgstr "해시태그"
+
+#: src/components/Footer/index.js
+msgid "Language"
+msgstr "언어"
+
