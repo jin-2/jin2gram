@@ -80,9 +80,10 @@ form .input-field:first-child {
   margin-top: 20px;
   @include primaryBtn;
 
-  .icon {
+  i {
     margin-right: 10px;
     vertical-align: text-bottom;
+    font-size: 18px;
   }
 }
 
