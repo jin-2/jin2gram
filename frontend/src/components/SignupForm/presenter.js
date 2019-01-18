@@ -15,21 +15,21 @@ const SignupForm = (props, context) => (
         <p className={formStyles.otherOption}>
             <span className={formStyles.or}>{context.t("OR")}</span>
         </p>
-        <form action="#">
+        <form onSubmit={props.handleSubmit}>
             <div className={formStyles.inputField}>
-                <input type="text" name="" id="signupId" placeholder={context.t("Mobile Number, or Email")} />
+                <input type="text" name="" id="signupId" placeholder={context.t("Mobile Number, or Email")} value={props.emailValue} name="email" onChange={props.handleInputChange} />
             </div>
             <div className={formStyles.inputField}>
-                <input type="text" name="" id="signupName" placeholder={context.t("Full Name")} />
+                <input type="text" name="" id="signupName" placeholder={context.t("Full Name")} value={props.fullnameValue} name="fullname" onChange={props.handleInputChange} />
             </div>
             <div className={formStyles.inputField}>
-                <input type="text" name="" id="signupNick" placeholder={context.t("Username")} />
+                <input type="text" name="" id="signupNick" placeholder={context.t("Username")} value={props.usernameValue} name="username" onChange={props.handleInputChange} />
             </div>
             <div className={formStyles.inputField}>
-                <input type="password" name="" id="signupPw" placeholder={context.t("Password")} />
+                <input type="password" name="" id="signupPw" placeholder={context.t("Password")} value={props.passwordValue} name="password" onChange={props.handleInputChange} />
             </div>
             <div className={formStyles.buttonWrap}>
-                <button type="button" className={formStyles.button}>{context.t("Sign Up")}</button>
+                <button className={formStyles.button}>{context.t("Sign Up")}</button>
             </div>
         </form>
         <p className={formStyles.agreeText}>
@@ -40,6 +40,15 @@ const SignupForm = (props, context) => (
         </p>
     </div>
 );
+
+SignupForm.propTypes = {
+    emailValue: PropTypes.string.isRequired,
+    fullnameValue: PropTypes.string.isRequired,
+    usernameValue: PropTypes.string.isRequired,
+    passwordValue: PropTypes.string.isRequired,
+    handleInputChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+};
 
 SignupForm.contextTypes = {
     t: PropTypes.func.isRequired,
