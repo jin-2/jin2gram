@@ -43,6 +43,7 @@ const LoginForm = (props, context) => (
         callback={props.handleFbLogin}
         cssClass={formStyles.buttonFb}
         icon="fa-facebook-square"
+        textButton={context.t("Log in with Facebook")}
       />
       <p className={formStyles.forgot}>{context.t("Forgot Password?")}</p>
     </div>

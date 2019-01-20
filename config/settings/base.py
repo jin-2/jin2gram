@@ -259,3 +259,6 @@ REST_FRAMEWORK = {
 REST_USE_JWT = True
 ACCOUNT_LOGOUT_ON_GET = True
 CORS_ORIGIN_ALLOW_ALL = True  # 모든 출처가 허용됨
+JWT_AUTH = {
+    'JWT_VERIFY_EXPIRATION': False,  # 토큰이 만료되지 않게 설정
+}

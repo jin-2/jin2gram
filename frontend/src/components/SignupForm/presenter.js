@@ -15,6 +15,7 @@ const SignupForm = (props, context) => (
       callback={props.handleFbLogin}
       cssClass={formStyles.buttonFb2}
       icon="fa-facebook-square"
+      textButton={context.t("Log in with Facebook")}
     />
     <p className={formStyles.otherOption}>
       <span className={formStyles.or}>{context.t("OR")}</span>
