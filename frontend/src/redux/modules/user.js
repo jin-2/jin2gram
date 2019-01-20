@@ -7,7 +7,7 @@
 // API actions
 function facebookLogin(access_token) {
   return dispatch => {
-    fetch("/users/login/facebook/", {
+    fetch("/users/login/facebook", {
       method: "POST",
       headers: {
         "Content-type": "application/json"
