@@ -26,7 +26,9 @@ function facebookLogin(access_token) {
     })
       .then(response => response.json())
       .then(json => {
-        dispatch(saveToken(json.token));
+        if (json.token) {
+          dispatch(saveToken(json.token));
+        }
       })
       .catch(err => console.log(err));
   };
@@ -46,10 +48,34 @@ function usernameLogin(username, password) {
     })
       .then(response => response.json())
       .then(json => {
-        console.log("username login: ", json);
-        // dispatch(saveToken(json.token));
+        if (json.token) {
+          dispatch(saveToken(json.token));
+        }
       })
       .catch(err => console.log(err));
+  };
+}
+
+function createAccount(username, password, email) {
+  return dispatch => {
+    fetch("/rest-auth/registration/", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        username,
+        password1: password,
+        password2: password,
+        email
+      })
+    })
+      .then(response => response.json())
+      .then(json => {
+        if (json.token) {
+          dispatch(saveToken(json.token));
+        }
+      });
   };
 }
 
@@ -81,7 +107,8 @@ function applySetToken(state, action) {
 // exports
 const actionCreators = {
   facebookLogin,
-  usernameLogin
+  usernameLogin,
+  createAccount
 };
 export { actionCreators };
 
