@@ -15,7 +15,7 @@ function saveToken(token) {
 // API actions
 function facebookLogin(access_token) {
   return dispatch => {
-    fetch("/users/login/facebook", {
+    fetch("/users/login/facebook/", {
       method: "POST",
       headers: {
         "Content-type": "application/json"
@@ -34,7 +34,7 @@ function facebookLogin(access_token) {
 
 function usernameLogin(username, password) {
   return dispatch => {
-    fetch("/rest-auth/login", {
+    fetch("/rest-auth/login/", {
       method: "POST",
       headers: {
         "Content-type": "application/json"

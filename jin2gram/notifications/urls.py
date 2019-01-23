@@ -1,8 +1,8 @@
-from django.urls import path
+from django.urls import re_path
 from . import views
 
 
 app_name = "notifications"
 urlpatterns = [
-    path('', view=views.Notifications.as_view(), name="notifications"),
+    re_path(r'^', view=views.Notifications.as_view(), name="notifications"),
 ]
