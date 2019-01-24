@@ -5,7 +5,7 @@ from . import views
 
 app_name = "images"
 urlpatterns = [
-    re_path(r'^', view=views.Images.as_view(), name="images"),
+    re_path(r'^$', view=views.Images.as_view(), name="images"),
     re_path(r'^(?P<image_id>[0-9]+)/$', view=views.DetailImage.as_view(), name="detail_image"),
     re_path(r'^(?P<image_id>[0-9]+)/likes/$', view=views.LikeImage.as_view(), name="like_image"),
     re_path(r'^(?P<image_id>[0-9]+)/unlikes/$', view=views.UnLikeImage.as_view(), name="unlike_image"),
