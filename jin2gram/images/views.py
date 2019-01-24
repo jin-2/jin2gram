@@ -6,8 +6,9 @@ from jin2gram.users import models as user_models
 from jin2gram.users import serializers as user_serializers
 from jin2gram.notifications import views as notification_views
 
+
 class Images(APIView):
-    
+
     def get(self, request, format=None):
 
         user = request.user
@@ -47,13 +48,14 @@ class Images(APIView):
         if serializer.is_valid():
             serializer.save(creator=user)
             return Response(data=serializer.data, status=status.HTTP_201_CREATED)
-        
+
         else:
             return Response(data=serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 
 def get_key(image):
     return image.created_at
+
 
 class LikeImage(APIView):
 
@@ -66,7 +68,6 @@ class LikeImage(APIView):
         serializer = user_serializers.ListUserSerializer(users, many=True)
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
-
 
     def post(self, request, image_id, format=None):
 
@@ -91,7 +92,7 @@ class LikeImage(APIView):
             )
             new_like.save()
             notification_views.create_notification(user, found_image.creator, 'like', found_image)
-            
+
             return Response(status=status.HTTP_201_CREATED)
 
 
@@ -121,10 +122,11 @@ class UnLikeImage(APIView):
             )
             return Response(status=status.HTTP_304_NOT_MODIFIED)
 
+
 class CommentImage(APIView):
-    
+
     def post(self, request, image_id, format=None):
-        
+
         user = request.user
 
         try:
@@ -140,18 +142,20 @@ class CommentImage(APIView):
                 img=found_image
             )
             # notification_views.create_notification(user, found_image.creator, 'comment', found_image, request.data['message'])
-            notification_views.create_notification(user, found_image.creator, 'comment', found_image, serializer.data['message'])
+            notification_views.create_notification(
+                user, found_image.creator, 'comment', found_image, serializer.data['message'])
             return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
         else:
             return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class Comment(APIView):
 
     def delete(self, request, comment_id, format=None):
 
         user = request.user
-        
+
         try:
             commnet = models.Comment.objects.get(id=comment_id, creator=user)
             commnet.delete()
@@ -162,12 +166,12 @@ class Comment(APIView):
 
 
 class ModerateComment(APIView):
-    
+
     # 내가 업로드한 이미지에 달린 댓글을 삭제할 때
     def delete(self, request, image_id, comment_id, format=None):
 
         user = request.user
-        
+
         try:
             delete_comment = models.Comment.objects.get(id=comment_id, img__id=image_id, img__creator=user)
             delete_comment.delete()
@@ -185,7 +189,7 @@ class Search(APIView):
         hashtags = request.query_params.get('hashtags', None)
 
         if hashtags is not None:
-            
+
             hashtags = hashtags.split(',')
             images = models.Image.objects.filter(tags__name__in=hashtags).distinct()
             serializer = serializers.UserProfileImageSerializer(images, many=True)
@@ -193,7 +197,7 @@ class Search(APIView):
             return Response(data=serializer.data, status=status.HTTP_200_OK)
 
         else:
-            
+
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -213,7 +217,7 @@ class DetailImage(APIView):
         try:
             image = models.Image.objects.get(id=image_id)
             serializer = serializers.ImageSerializer(image)
-            
+
             return Response(data=serializer.data, status=status.HTTP_200_OK)
 
         except models.Image.DoesNotExist:
@@ -226,25 +230,25 @@ class DetailImage(APIView):
         image = self.found_own_image(image_id, user)
 
         if image is None:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
         serializer = serializers.InputImageSerializer(image, data=requeset.data, partial=True)
 
         if serializer.is_valid():
             serializer.save(creator=user)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
-        
+
         else:
             return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, image_id, format=None):
-        
+
         user = request.user
 
         image = self.found_own_image(image_id, user)
 
         if image is None:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
         image.delete()
 

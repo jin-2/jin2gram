@@ -1,4 +1,5 @@
 // import
+import { actionCreators as userActions } from "./user";
 
 // action
 
@@ -16,7 +17,12 @@ function getFeed() {
         Authorization: `JWT ${token}`
       }
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.status === 401) {
+          dispatch(userActions.logout());
+        }
+        return response.json();
+      })
       .then(json => console.log(json))
       .catch(err => console.log(err));
   };
