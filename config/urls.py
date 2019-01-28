@@ -8,10 +8,10 @@ from rest_framework_jwt.views import obtain_jwt_token
 from jin2gram import views
 
 urlpatterns = [
-    re_path(r'^rest-auth/', include('rest_auth.urls')),
-    re_path(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     # Django Admin, use {% url 'admin:index' %}
     re_path(settings.ADMIN_URL, admin.site.urls),
+    re_path(r'^rest-auth/', include('rest_auth.urls')),
+    re_path(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     # User management
     re_path(
         r'^users/',
@@ -26,11 +26,15 @@ urlpatterns = [
         include("jin2gram.notifications.urls", namespace="notifications"),
     ),
     re_path(r'^accounts/', include("allauth.urls")),
-    re_path(r'^', views.ReactAppView.as_view()),
     # Your stuff: custom urls includes go here
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )
+
+urlpatterns += [
+    re_path(r'^', views.ReactAppView.as_view()),
+]
+
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit
@@ -55,5 +59,6 @@ if settings.DEBUG:
     ]
     if "debug_toolbar" in settings.INSTALLED_APPS:
         import debug_toolbar
-
-        urlpatterns = [re_path(r'^__debug__/', include(debug_toolbar.urls))] + urlpatterns
+        urlpatterns = [
+            re_path(r'^__debug__/', include(debug_toolbar.urls))
+        ] + urlpatterns

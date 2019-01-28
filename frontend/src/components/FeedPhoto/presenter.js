@@ -1,7 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
+import PhotoActions from "../PhotoActions";
 
-const FeedPhoto = props => <div>{props.caption}</div>;
+const FeedPhoto = props => (
+  <div>
+    <header>
+      <div>
+        <img
+          src={props.creator.profile_image || require("images/noPhoto.jpg")}
+          alt={props.creator.name}
+          width="30"
+        />
+      </div>
+      <div>
+        <span>{props.creator.name}</span>
+        <span>{props.location}</span>
+      </div>
+      <div>
+        <img src={props.file} alt={props.caption} width="600" />
+      </div>
+      <div>
+        <PhotoActions number={props.likes_count} />
+      </div>
+    </header>
+  </div>
+);
 
 FeedPhoto.propTypes = {
   creator: PropTypes.shape({
@@ -10,7 +33,8 @@ FeedPhoto.propTypes = {
   }).isRequired,
   location: PropTypes.string.isRequired,
   file: PropTypes.string.isRequired,
-  like_count: PropTypes.number.isRequired,
+  likes_count: PropTypes.number.isRequired,
+  caption: PropTypes.string.isRequired,
   created_at: PropTypes.string.isRequired,
   comments: PropTypes.arrayOf(
     PropTypes.shape({
