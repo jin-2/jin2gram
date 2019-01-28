@@ -4,8 +4,12 @@ import Loading from "../Loading";
 import styles from "./styles.scss";
 
 const Feed = (props, context) => {
-  const loading = this.props;
-  return loading ? "feed" : <LoadingFeed />;
+  const { loading, feed } = props;
+  if (loading) {
+    return <LoadingFeed />;
+  } else if (feed) {
+    return <RenderFeed {...props} />;
+  }
 };
 
 const LoadingFeed = props => (
@@ -14,8 +18,17 @@ const LoadingFeed = props => (
   </div>
 );
 
+const RenderFeed = props => (
+  <div>
+    {props.feed.map(post => (
+      <p key={post.id}>{post.caption}</p>
+    ))}
+  </div>
+);
+
 Feed.propTypes = {
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  feed: PropTypes.array
 };
 
 export default Feed;
