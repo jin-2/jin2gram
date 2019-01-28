@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styles from "./styles.scss";
 import PhotoActions from "../PhotoActions";
+import PhotoComments from "../PhotoComments";
+import TimeStemp from "../TimeStemp";
 
 const FeedPhoto = props => (
-  <div>
+  <div className={styles.feedItem}>
     <header>
       <div>
         <img
@@ -21,6 +24,12 @@ const FeedPhoto = props => (
       </div>
       <div>
         <PhotoActions number={props.likes_count} />
+        <PhotoComments
+          caption={props.caption}
+          creator={props.creator.name}
+          comments={props.comments}
+        />
+        <TimeStemp time={props.natural_time} />
       </div>
     </header>
   </div>
@@ -35,7 +44,7 @@ FeedPhoto.propTypes = {
   file: PropTypes.string.isRequired,
   likes_count: PropTypes.number.isRequired,
   caption: PropTypes.string.isRequired,
-  created_at: PropTypes.string.isRequired,
+  natural_time: PropTypes.string.isRequired,
   comments: PropTypes.arrayOf(
     PropTypes.shape({
       message: PropTypes.string.isRequired,

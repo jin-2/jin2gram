@@ -1,6 +1,7 @@
 from django.db import models
 from taggit.managers import TaggableManager
 from jin2gram.users import models as user_models
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
 class TimeStampModel(models.Model):
@@ -31,12 +32,16 @@ class Image(TimeStampModel):
     def comments_count(self):
         return self.comments.all().count()
 
+    @property
+    def natural_time(self):
+        return naturaltime(self.created_at)
+
     def __str__(self):
         return '{} - {}'.format(self.location, self.caption)
 
     # Meta 클래스는 모델의 설정을 위해서 사용
     class Meta:
-        
+
         # DB에서 얻은 리스트를 생성된 날짜로 정렬할 수 있게
         ordering = ['-created_at']
 
@@ -44,7 +49,7 @@ class Image(TimeStampModel):
 class Comment(TimeStampModel):
 
     """Comment Model"""
-    
+
     message = models.TextField()
     creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, null=True)
     img = models.ForeignKey(Image, on_delete=models.CASCADE, null=True, related_name='comments')

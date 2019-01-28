@@ -14,6 +14,7 @@ class FeedUserSerializer(serializers.ModelSerializer):
             'profile_image'
         )
 
+
 class CommentSerializer(serializers.ModelSerializer):
 
     creator = FeedUserSerializer(read_only=True)
@@ -51,7 +52,7 @@ class ImageSerializer(TaggitSerializer, serializers.ModelSerializer):
             'likes_count',
             'creator',
             'tags',
-            'created_at'
+            'natural_time'
         )
 
 
@@ -75,6 +76,7 @@ class SmallImage(serializers.ModelSerializer):
             'id',
             'file'
         )
+
 
 class InputImageSerializer(serializers.ModelSerializer):
 
