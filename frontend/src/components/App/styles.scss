@@ -30,3 +30,7 @@ input[type="password"] {
 ::placeholder {
   color: $dark-grey;
 }
+button {
+  background-color: transparent;
+  border: 0;
+}

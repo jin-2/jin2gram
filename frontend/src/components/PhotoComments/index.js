@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styles from "./styles.scss";
 
 const PhotoComments = props => (
   <div>
-    <ul>
+    <ul className={styles.commentList}>
       <Comment creator={props.creator} comment={props.caption} />
       {props.comments.map(comment => (
         <Comment
@@ -17,9 +18,9 @@ const PhotoComments = props => (
 );
 
 const Comment = props => (
-  <li>
-    <span>{props.creator}</span>
-    <span>{props.comment}</span>
+  <li className={styles.commentItem}>
+    <span className={styles.commentCreator}>{props.creator}</span>
+    <span className={styles.commentText}>{props.comment}</span>
   </li>
 );
 
