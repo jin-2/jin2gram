@@ -7,7 +7,11 @@ import styles from "./styles.scss";
 const PhotoActions = (props, context) => (
   <div className={styles.photoActions}>
     <div className={styles.actions}>
-      <button type="button" className={styles.actionLike}>
+      <button
+        type="button"
+        className={styles.actionLike}
+        onClick={props.handleHeartClick}
+      >
         <IconHeart fontSize="28px" color="#000" />
       </button>
       <button type="button" className={styles.actionReply}>
@@ -26,7 +30,10 @@ PhotoActions.contextTypes = {
 };
 
 PhotoActions.propTypes = {
-  number: PropTypes.number.isRequired
+  number: PropTypes.number.isRequired,
+  isLiked: PropTypes.bool.isRequired,
+  photoId: PropTypes.number.isRequired,
+  handleHeartClick: PropTypes.func.isRequired
 };
 
 export default PhotoActions;

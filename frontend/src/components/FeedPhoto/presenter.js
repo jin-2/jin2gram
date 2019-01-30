@@ -24,7 +24,11 @@ const FeedPhoto = props => (
       <img src={props.file} alt={props.caption} />
     </div>
     <div className={styles.feedExtra}>
-      <PhotoActions number={props.likes_count} />
+      <PhotoActions
+        number={props.likes_count}
+        isLiked={props.is_liked}
+        photoId={props.id}
+      />
       <PhotoComments
         caption={props.caption}
         creator={props.creator.name}
@@ -54,7 +58,8 @@ FeedPhoto.propTypes = {
         profile_image: PropTypes.string
       }).isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  is_liked: PropTypes.bool.isRequired
 };
 
 export default FeedPhoto;
