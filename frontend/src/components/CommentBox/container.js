@@ -31,10 +31,12 @@ class Container extends Component {
     const { key } = event;
     const { submitComment } = this.props;
     const { comment } = this.state;
-    console.log("keypress", event.key);
     if (key === "Enter") {
       event.preventDefault();
       submitComment(comment);
+      this.setState({
+        comment: ""
+      });
     }
   };
 }
