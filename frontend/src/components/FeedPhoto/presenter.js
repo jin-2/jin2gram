@@ -4,7 +4,7 @@ import styles from "./styles.scss";
 import PhotoActions from "../PhotoActions";
 import PhotoComments from "../PhotoComments";
 import TimeStemp from "../TimeStemp";
-import CommentBox from "../CommentBox/presenter";
+import CommentBox from "../CommentBox";
 
 const FeedPhoto = props => (
   <div className={styles.feedItem}>

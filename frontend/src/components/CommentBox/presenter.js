@@ -8,12 +8,21 @@ const CommentBox = (props, context) => (
     <TextareaAutosize
       className={styles.textbox}
       placeholder={context.t("Add a comment...")}
+      onChange={props.handleInputChange}
+      onKeyPress={props.handleInputKeyPress}
+      value={props.comment}
     />
   </form>
 );
 
 CommentBox.contextTypes = {
   t: PropTypes.func.isRequired
+};
+
+CommentBox.propTypes = {
+  comment: PropTypes.string.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  handleInputKeyPress: PropTypes.func.isRequired
 };
 
 export default CommentBox;
