@@ -95,6 +95,29 @@ function unlikePhoto(photoId) {
   };
 }
 
+function commentPhoto(photoId, message) {
+  return (dispatch, getState) => {
+    const {
+      user: { token }
+    } = getState();
+
+    fetch(`images/${photoId}/comments/`, {
+      method: "POST",
+      headers: {
+        Authorization: `JWT ${token}`,
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        message
+      })
+    }).then(response => {
+      if (response.status === 401) {
+        dispatch(userActions.logout());
+      }
+    });
+  };
+}
+
 // initial state
 const initialState = {};
 
@@ -149,10 +172,9 @@ function applyUnlikePhoto(state, action) {
 const actionCreators = {
   getFeed,
   setFeed,
-  doLikePhoto,
-  doUnlikePhoto,
   likePhoto,
-  unlikePhoto
+  unlikePhoto,
+  commentPhoto
 };
 export { actionCreators };
 

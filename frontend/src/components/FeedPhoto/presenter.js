@@ -35,7 +35,7 @@ const FeedPhoto = props => (
         comments={props.comments}
       />
       <TimeStemp time={props.natural_time} />
-      <CommentBox />
+      <CommentBox photoId={props.id} />
     </div>
   </div>
 );
@@ -59,7 +59,8 @@ FeedPhoto.propTypes = {
       }).isRequired
     }).isRequired
   ).isRequired,
-  is_liked: PropTypes.bool.isRequired
+  is_liked: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired
 };
 
 export default FeedPhoto;
