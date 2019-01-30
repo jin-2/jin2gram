@@ -36,7 +36,7 @@ class Images(APIView):
         # 람다식
         sorted_list = sorted(image_list, key=lambda image: image.created_at, reverse=True)
 
-        serializer = serializers.ImageSerializer(sorted_list, many=True)
+        serializer = serializers.ImageSerializer(sorted_list, many=True, context={'request': request})
 
         return Response(serializer.data)
 
@@ -53,8 +53,8 @@ class Images(APIView):
             return Response(data=serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 
-def get_key(image):
-    return image.created_at
+# def get_key(image):
+#     return image.created_at
 
 
 class LikeImage(APIView):
@@ -216,12 +216,11 @@ class DetailImage(APIView):
 
         try:
             image = models.Image.objects.get(id=image_id)
-            serializer = serializers.ImageSerializer(image)
-
-            return Response(data=serializer.data, status=status.HTTP_200_OK)
-
         except models.Image.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = serializers.ImageSerializer(image, context={'request': request})
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def put(self, requeset, image_id, format=None):
 
