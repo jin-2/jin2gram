@@ -1,0 +1,42 @@
+.dim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.popup {
+  margin: 20px;
+  width: 400px;
+  background-color: #fff;
+  @include boxBorder(yes);
+}
+.popup-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 43px;
+  border-bottom: 1px solid #efefef;
+  text-align: center;
+}
+.popup-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+.popup-close {
+  position: absolute;
+  top: 4px;
+  right: -2px;
+}
+.popup-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    max-height: 356px;
+}

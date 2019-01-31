@@ -19,8 +19,10 @@ const PhotoActions = (props, context) => (
       </button>
     </div>
     <div className={styles.likeLength}>
-      {props.number}{" "}
-      {props.number === 1 ? context.t("like") : context.t("likes")}
+      <button type="button" onClick={props.openLikes}>
+        {props.number}{" "}
+        {props.number === 1 ? context.t("like") : context.t("likes")}
+      </button>
     </div>
   </div>
 );
@@ -33,7 +35,8 @@ PhotoActions.propTypes = {
   number: PropTypes.number.isRequired,
   isLiked: PropTypes.bool.isRequired,
   photoId: PropTypes.number.isRequired,
-  handleHeartClick: PropTypes.func.isRequired
+  handleHeartClick: PropTypes.func.isRequired,
+  openLikes: PropTypes.func.isRequired
 };
 
 export default PhotoActions;
