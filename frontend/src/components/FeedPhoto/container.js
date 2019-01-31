@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import FeedPhoto from "./presenter";
 
 class Container extends Component {
   state = {
     seeingLikes: false
+  };
+
+  static propTypes = {
+    getPhotoLikes: PropTypes.func.isRequired
   };
 
   render() {
@@ -18,9 +23,11 @@ class Container extends Component {
   }
 
   _openLikes = () => {
+    const { getPhotoLikes } = this.props;
     this.setState({
       seeingLikes: true
     });
+    getPhotoLikes();
   };
 
   _closeLikes = () => {
