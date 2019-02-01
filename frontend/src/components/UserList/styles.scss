@@ -34,9 +34,12 @@
   right: -2px;
 }
 .popup-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
-    max-height: 356px;
+  overflow-y: auto;
+  min-height: 200px;
+  max-height: 356px;
+}
+.loading-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

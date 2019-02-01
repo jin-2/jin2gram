@@ -1,4 +1,11 @@
 import { connect } from "react-redux";
 import Container from "./container";
 
-export default connect()(Container);
+const mapStateToProps = (state, ownProps) => {
+  const { usersList } = state.user;
+  return {
+    usersList
+  };
+};
+
+export default connect(mapStateToProps)(Container);

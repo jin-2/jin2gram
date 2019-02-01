@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import IconClose from "react-ionicons/lib/MdClose";
 import styles from "./styles.scss";
 import Loading from "../Loading";
+import UserRow from "../UserRow";
 
 const UserList = (props, context) => (
   <div className={styles.dim}>
@@ -14,11 +15,33 @@ const UserList = (props, context) => (
           className={styles.popupClose}
           onClick={props.closeLikes}
         >
-          <IconClose fontSize="30px" color="#262626" />
+          <IconClose fontSize="30px" color="#666" />
         </button>
       </header>
-      <div className={styles.popupContent}>{props.loading && <Loading />}</div>
+      <div className={styles.popupContent}>
+        {props.loading ? (
+          <ListLoading />
+        ) : (
+          <UserItems usersList={props.usersList} />
+        )}
+      </div>
     </section>
+  </div>
+);
+
+const ListLoading = () => (
+  <div className={styles.loadingWrap}>
+    <Loading />
+  </div>
+);
+
+const UserItems = props => (
+  <div>
+    <ul>
+      {props.usersList.map(user => (
+        <UserRow {...user} key={user.id} />
+      ))}
+    </ul>
   </div>
 );
 
@@ -29,7 +52,8 @@ UserList.contextTypes = {
 UserList.propTypes = {
   loading: PropTypes.bool.isRequired,
   closeLikes: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  usersList: PropTypes.array
 };
 
 export default UserList;

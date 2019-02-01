@@ -20,10 +20,10 @@ function logout() {
   };
 }
 
-function setUserList(userList) {
+function setUserList(usersList) {
   return {
     type: SET_USER_LIST,
-    userList
+    usersList
   };
 }
 
@@ -150,10 +150,10 @@ function applyLogout(state, action) {
 }
 
 function applySetUserList(state, action) {
-  const { userList } = action;
+  const { usersList } = action;
   return {
     ...state,
-    userList
+    usersList
   };
 }
 
