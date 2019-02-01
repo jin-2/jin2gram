@@ -5,14 +5,25 @@ from jin2gram.images import serializers as image_serializer
 
 class ListUserSerializer(serializers.ModelSerializer):
 
+    following = serializers.SerializerMethodField()
+
     class Meta:
         model = models.User
         fields = (
             'id',
             'name',
             'profile_image',
-            'username'
+            'username',
+            'following'
         )
+
+    def get_following(self, obj):
+        if 'request' in self.context:
+            request = self.context['request']
+            if obj in request.user.following.all():
+                return True
+        return False
+
 
 class UserProfileSerializer(serializers.ModelSerializer):
 
