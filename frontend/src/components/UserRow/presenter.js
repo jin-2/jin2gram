@@ -4,7 +4,6 @@ import styles from "./styles.scss";
 
 const UserRow = (props, context) => (
   <div className={styles.userItem}>
-    {console.log("user-row-data: ", props)}
     <div className={styles.userImg}>
       <img
         src={props.propfile_image || require("images/noPhoto.jpg")}
@@ -25,6 +24,12 @@ const UserRow = (props, context) => (
 
 UserRow.contextTypes = {
   t: PropTypes.func.isRequired
+};
+
+UserRow.propTypes = {
+  propfile_image: PropTypes.string,
+  username: PropTypes.string.isRequired,
+  name: PropTypes.string
 };
 
 export default UserRow;

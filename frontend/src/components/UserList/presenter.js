@@ -49,6 +49,10 @@ UserList.contextTypes = {
   t: PropTypes.func.isRequired
 };
 
+UserItems.propTypes = {
+  usersList: PropTypes.array
+};
+
 UserList.propTypes = {
   loading: PropTypes.bool.isRequired,
   closeLikes: PropTypes.func.isRequired,
