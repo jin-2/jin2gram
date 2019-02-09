@@ -6,6 +6,7 @@ import Footer from "../Footer";
 import Auth from "../Auth";
 import Navigation from "../Navigation";
 import Feed from "../Feed";
+import Explore from "../Explore";
 
 const App = props => [
   props.isLoggedIn ? <Navigation key={1} /> : null,
@@ -16,7 +17,7 @@ const App = props => [
 const PrivateRoutes = () => (
   <Switch>
     <Route exact path="/" component={Feed} />
-    <Route path="/explore" render={() => "explore"} />
+    <Route path="/explore" component={Explore} />
   </Switch>
 );
 

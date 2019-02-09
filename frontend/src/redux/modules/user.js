@@ -174,6 +174,23 @@ function unfollowUser(userId) {
   };
 }
 
+function getExplore() {
+  return (dispatch, getState) => {
+    const {
+      user: { token }
+    } = getState();
+
+    fetch("/users/explore/", {
+      headers: {
+        Authorization: `JWT ${token}`,
+        "Content-type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(json => dispatch(setUserList(json)));
+  };
+}
+
 // initial state
 const initialState = {
   isLoggedIn: localStorage.getItem("jwt") ? true : false,
@@ -263,7 +280,8 @@ const actionCreators = {
   logout,
   getPhotoLikes,
   followUser,
-  unfollowUser
+  unfollowUser,
+  getExplore
 };
 export { actionCreators };
 
