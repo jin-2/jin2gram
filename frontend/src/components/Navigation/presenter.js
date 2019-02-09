@@ -17,13 +17,13 @@ const Navigation = (props, context) => (
         </h1>
       </div>
       <div className={styles.headerSearch}>
-        <form className={styles.searchForm}>
+        <form className={styles.searchForm} onSubmit={props.handleSubmit}>
           <input
             type="search"
-            name=""
-            id=""
             placeholder={context.t("Search")}
             className={styles.input}
+            value={props.value}
+            onChange={props.handleInputChange}
           />
         </form>
       </div>
@@ -44,6 +44,12 @@ const Navigation = (props, context) => (
 
 Navigation.contextTypes = {
   t: PropTypes.func.isRequired
+};
+
+Navigation.propTypes = {
+  value: PropTypes.string.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default Navigation;

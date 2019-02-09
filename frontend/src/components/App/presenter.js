@@ -18,6 +18,7 @@ const PrivateRoutes = () => (
   <Switch>
     <Route exact path="/" component={Feed} />
     <Route path="/explore" component={Explore} />
+    <Route path="/search/:searchTerm" render={() => "search page"} />
   </Switch>
 );
 
