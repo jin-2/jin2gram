@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import IconHeart from "react-ionicons/lib/IosHeartOutline";
+import IconFullHeart from "react-ionicons/lib/IosHeart";
 import IconText from "react-ionicons/lib/IosTextOutline";
 import styles from "./styles.scss";
 
@@ -12,7 +13,11 @@ const PhotoActions = (props, context) => (
         className={styles.actionLike}
         onClick={props.handleHeartClick}
       >
-        <IconHeart fontSize="28px" color="#000" />
+        {props.isLiked ? (
+          <IconFullHeart fontSize="28px" color="#FF1E46" />
+        ) : (
+          <IconHeart fontSize="28px" color="#000" />
+        )}
       </button>
       <button type="button" className={styles.actionReply}>
         <IconText fontSize="28px" color="#000" />
