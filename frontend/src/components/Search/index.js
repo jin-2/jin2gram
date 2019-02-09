@@ -1,4 +1,27 @@
 import { connect } from "react-redux";
+import { actionCreators as userActions } from "../../redux/modules/user";
 import Container from "./container";
 
-export default connect()(Container);
+const mapStateToProps = (state, ownProps) => {
+  const {
+    user: { userList, imageList }
+  } = state;
+  return {
+    userList,
+    imageList
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { searchTerm } = ownProps.match.params;
+  return {
+    searchByTerm: () => {
+      dispatch(userActions.searchByTerm(searchTerm));
+    }
+  };
+};
+
+export default connect(
+    mapStateToProps,
+  mapDispatchToProps
+)(Container);

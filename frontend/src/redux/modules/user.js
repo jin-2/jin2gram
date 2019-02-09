@@ -6,6 +6,7 @@ const LOGOUT = "LOGOUT";
 const SET_USER_LIST = "SET_USER_LIST";
 const FOLLOW_USER = "FOLLOW_USER";
 const UNFOLLOW_USER = "UNFOLLOW_USER";
+const SET_IMAGE_LIST = "SET_IMAGE_LIST";
 
 // action creator
 function saveToken(token) {
@@ -40,6 +41,13 @@ function setUnfollowUser(userId) {
   return {
     type: UNFOLLOW_USER,
     userId
+  };
+}
+
+function setImageList(imageList) {
+  return {
+    type: SET_IMAGE_LIST,
+    imageList
   };
 }
 
@@ -191,6 +199,55 @@ function getExplore() {
   };
 }
 
+function searchByTerm(searchTerm) {
+  console.log("searchByTerm fn: ", searchTerm);
+  return async (dispatch, getState) => {
+    const {
+      user: { token }
+    } = getState();
+    const userList = await searchUsers(token, searchTerm);
+    const imageList = await searchImages(token, searchTerm);
+
+    if (userList === 401 || imageList === 401) {
+      return dispatch(logout());
+    }
+    dispatch(setUserList(userList));
+    dispatch(setImageList(imageList));
+  };
+}
+
+function searchUsers(token, searchTerm) {
+  return fetch(`/users/search/?username=${searchTerm}`, {
+    headers: {
+      Authorization: `JWT ${token}`,
+      "content-type": "application/json"
+    }
+  })
+    .then(response => {
+      if (response.status === 401) {
+        return 401;
+      }
+      return response.json();
+    })
+    .then(json => json);
+}
+
+function searchImages(token, searchTerm) {
+  return fetch(`/images/search/?hashtags=${searchTerm}`, {
+    headers: {
+      Authorization: `JWT ${token}`,
+      "content-type": "application/json"
+    }
+  })
+    .then(response => {
+      if (response.status === 401) {
+        return 401;
+      }
+      return response.json();
+    })
+    .then(json => json);
+}
+
 // initial state
 const initialState = {
   isLoggedIn: localStorage.getItem("jwt") ? true : false,
@@ -210,6 +267,8 @@ function reducer(state = initialState, action) {
       return applySetFollowUser(state, action);
     case "UNFOLLOW_USER":
       return applySetUnfollowUser(state, action);
+    case "SET_IMAGE_LIST":
+      return applySetImageList(state, action);
     default:
       return state;
   }
@@ -272,6 +331,14 @@ function applySetUnfollowUser(state, action) {
   };
 }
 
+function applySetImageList(state, action) {
+  const { imageList } = action;
+  return {
+    ...state,
+    imageList
+  };
+}
+
 // exports
 const actionCreators = {
   facebookLogin,
@@ -281,7 +348,8 @@ const actionCreators = {
   getPhotoLikes,
   followUser,
   unfollowUser,
-  getExplore
+  getExplore,
+  searchByTerm
 };
 export { actionCreators };
 
