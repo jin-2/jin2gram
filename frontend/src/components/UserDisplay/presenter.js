@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import styles from "./styles.scss";
 
 const UserDisplay = (props, context) => (
-  <div className={styles.userItem}>
+  <div className={`${styles.userItem} ${props.vertical && styles.vertical}`}>
+    {console.log(props)}
     <div className={styles.userImg}>
       <img
         src={props.propfile_image || require("images/noPhoto.jpg")}
@@ -36,6 +37,7 @@ UserDisplay.propTypes = {
   username: PropTypes.string.isRequired,
   name: PropTypes.string,
   following: PropTypes.bool.isRequired,
+  vertical: PropTypes.bool,
   handleClick: PropTypes.func.isRequired
 };
 

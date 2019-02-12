@@ -43,3 +43,34 @@
   color: #fff;
   font-weight: 600;
 }
+
+.vertical {
+  &.user-item {
+    flex-direction: column;
+    justify-content: center;
+    max-width: 30%;
+    height: 220px;
+    border: solid 1px #efefef;
+    background-color: #fff;
+  }
+
+  .user-img {
+    flex-basis: 78px;
+    margin: {
+      right: 0;
+      bottom: 10px;
+    }
+    width: 78px;
+    height: 78px;
+  }
+
+  .user-text {
+    flex: initial;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .user-desc {
+    font-size: 12px;
+  }
+}

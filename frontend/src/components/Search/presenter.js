@@ -32,7 +32,7 @@ const Search = (props, context) => {
 const UserList = props => (
   <div>
     {props.list.map(user => (
-      <UserDisplay {...user} />
+      <UserDisplay {...user} vertical={true} />
     ))}
   </div>
 );
