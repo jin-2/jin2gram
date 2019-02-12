@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.scss";
 
-const UserRow = (props, context) => (
+const UserDisplay = (props, context) => (
   <div className={styles.userItem}>
     <div className={styles.userImg}>
       <img
@@ -26,11 +26,11 @@ const UserRow = (props, context) => (
   </div>
 );
 
-UserRow.contextTypes = {
+UserDisplay.contextTypes = {
   t: PropTypes.func.isRequired
 };
 
-UserRow.propTypes = {
+UserDisplay.propTypes = {
   id: PropTypes.number.isRequired,
   propfile_image: PropTypes.string,
   username: PropTypes.string.isRequired,
@@ -39,4 +39,4 @@ UserRow.propTypes = {
   handleClick: PropTypes.func.isRequired
 };
 
-export default UserRow;
+export default UserDisplay;

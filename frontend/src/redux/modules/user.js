@@ -251,7 +251,9 @@ function searchImages(token, searchTerm) {
 // initial state
 const initialState = {
   isLoggedIn: localStorage.getItem("jwt") ? true : false,
-  token: localStorage.getItem("jwt")
+  token: localStorage.getItem("jwt"),
+  usersList: [],
+  imageList: []
 };
 
 // reducer

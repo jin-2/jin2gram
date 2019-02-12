@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Loading from "../Loading";
 import styles from "./styles.scss";
-import UserRow from "../UserRow";
+import UserDisplay from "../UserDisplay";
 
 const Explore = (props, context) => {
   const { loading, usersList } = props;
@@ -23,7 +23,7 @@ const RenderUsers = props => (
   <ul className={styles.exploreList}>
     {props.usersList.map(user => (
       <li key={user.id}>
-        <UserRow {...user} />
+        <UserDisplay {...user} />
       </li>
     ))}
   </ul>

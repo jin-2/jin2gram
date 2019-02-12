@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import IconClose from "react-ionicons/lib/MdClose";
 import styles from "./styles.scss";
 import Loading from "../Loading";
-import UserRow from "../UserRow";
+import UserDisplay from "../UserDisplay";
 
 const UserList = (props, context) => (
   <div className={styles.dim}>
@@ -39,7 +39,7 @@ const UserItems = props => (
   <div>
     <ul>
       {props.usersList.map(user => (
-        <UserRow {...user} key={user.id} />
+        <UserDisplay {...user} key={user.id} />
       ))}
     </ul>
   </div>

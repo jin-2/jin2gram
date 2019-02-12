@@ -4,10 +4,10 @@ import Container from "./container";
 
 const mapStateToProps = (state, ownProps) => {
   const {
-    user: { userList, imageList }
+    user: { usersList, imageList }
   } = state;
   return {
-    userList,
+    usersList,
     imageList
   };
 };
@@ -22,6 +22,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(
-    mapStateToProps,
+  mapStateToProps,
   mapDispatchToProps
 )(Container);

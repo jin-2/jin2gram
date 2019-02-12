@@ -1,6 +1,27 @@
+.not-found {
+  padding: 50px;
+  text-align: center;
+  font-weight: 600;
+}
 .search-loading {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60vh;
+}
+.search-wrap {
+  margin: 0 auto;
+  max-width: $page-max-width;
+
+  @include breakpoint(phablet) {
+    padding: 0 20px;
+  }
+}
+.search-title {
+  margin: {
+    top: 60px;
+    bottom: 16px;
+  }
+  color: #999;
+  font-weight: 600;
 }
