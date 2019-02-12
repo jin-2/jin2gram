@@ -1,0 +1,53 @@
+.image-item-wrap {
+  width: 33.33%;
+  padding: 14px;
+
+  @include breakpoint(mobileonly) {
+    padding: 1px;
+  }
+}
+.image-item {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover .info-layer {
+    opacity: 1;
+  }
+}
+.image-layer {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.info-layer {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+.count {
+  margin: 0 8px;
+  .icon {
+    margin-right: 3px;
+    vertical-align: -5px;
+  }
+}

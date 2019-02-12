@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./styles.scss";
 import Loading from "../Loading";
 import UserDisplay from "../UserDisplay";
+import ImageDisplay from "../ImageDisplay";
 
 const Search = (props, context) => {
   if (props.loading) {
@@ -32,15 +33,15 @@ const Search = (props, context) => {
 const UserList = props => (
   <div>
     {props.list.map(user => (
-      <UserDisplay {...user} vertical={true} />
+      <UserDisplay {...user} key={user.id} vertical={true} />
     ))}
   </div>
 );
 
 const ImageList = props => (
-  <div>
+  <div className={styles.imageList}>
     {props.list.map(image => (
-      <div key={image.id}>{image.id}</div>
+      <ImageDisplay key={image.id} image={image} />
     ))}
   </div>
 );
