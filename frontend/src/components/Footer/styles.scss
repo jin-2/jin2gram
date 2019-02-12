@@ -1,36 +1,37 @@
 .footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 55px auto;
-    max-width: $page-max-width;
-    font-size: $small-font;
-    
-    @include breakpoint(mobileonly) {
-        justify-content: center;
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 55px auto;
+  max-width: $page-max-width;
+  font-size: $small-font;
+
+  @include breakpoint(phablet) {
+    padding: 0 20px;
+  }
+
+  @include breakpoint(mobileonly) {
+    justify-content: center;
+  }
 }
 
 .footer-list {
-    display: flex;
-    flex-wrap: wrap;
-    color: $dark-blue;
+  display: flex;
+  flex-wrap: wrap;
+  color: $dark-blue;
 
-    @include breakpoint(mobileonly) {
-        justify-content: center;
-    }
+  @include breakpoint(mobileonly) {
+    justify-content: center;
+  }
 }
 
 .footer-item {
-    margin-right: 16px;
-    cursor: pointer;
-    
-    @include breakpoint(mobileonly) {
-        margin-bottom: 15px;
-    }
+  padding: 8px;
+  cursor: pointer;
 }
 
 .footer-copy {
-    color: $dark-grey;
+  padding: 8px;
+  color: $dark-grey;
 }
