@@ -282,3 +282,7 @@ pip-selfcheck.json
 
 jin2gram/media/
 .idea
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

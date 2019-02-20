@@ -36,6 +36,7 @@ django-taggit-serializer = "*"
 django-rest-auth = "*"
 django-cors-headers = "*"
 pillow = "==5.0.0"
+awsebcli = "*"
 
 [dev-packages]
 pylint = "*"
