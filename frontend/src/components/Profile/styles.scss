@@ -1,0 +1,97 @@
+.profile {
+  margin: 0 auto;
+  max-width: $page-max-width;
+}
+.profile-header {
+  display: flex;
+  margin: 60px 0 44px;
+}
+.profile-img {
+  flex: 1 0;
+  text-align: center;
+}
+.img-wrap {
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.0975);
+    border-radius: 50%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.profile-text {
+  flex: 2;
+}
+.name-wrap {
+  display: flex;
+  margin-bottom: 20px;
+}
+.name {
+  margin-right: 20px;
+  color: #262626;
+  font-size: 28px;
+  font-weight: 300;
+}
+.desc {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.nickname {
+  display: block;
+  font-weight: 600;
+}
+.website {
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  a {
+    display: inline;
+  }
+}
+
+.personalAction {
+  display: inline-block;
+}
+.edit-btn {
+  @include secondaryBtn();
+}
+.setting-btn {
+  vertical-align: middle;
+}
+
+.counting-list {
+  display: flex;
+  margin-bottom: 20px;
+  font-size: 16px;
+
+  > li {
+    margin-right: 40px;
+    cursor: pointer;
+  }
+
+  .value {
+    font-weight: 600;
+  }
+}

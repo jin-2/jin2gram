@@ -7,13 +7,16 @@ const SET_USER_LIST = "SET_USER_LIST";
 const FOLLOW_USER = "FOLLOW_USER";
 const UNFOLLOW_USER = "UNFOLLOW_USER";
 const SET_IMAGE_LIST = "SET_IMAGE_LIST";
+const SET_PROFILE = "SET_PROFILE";
 
 // action creator
-function saveToken(token) {
+function saveToken(token, username) {
   localStorage.setItem("jwt", token);
+  localStorage.setItem("username", username);
   return {
     type: SAVE_TOKEN,
-    token
+    token,
+    username
   };
 }
 
@@ -51,6 +54,13 @@ function setImageList(imageList) {
   };
 }
 
+function setProfile(profile) {
+  return {
+    type: SET_PROFILE,
+    profile
+  };
+}
+
 // API actions
 function facebookLogin(access_token) {
   return dispatch => {
@@ -65,6 +75,7 @@ function facebookLogin(access_token) {
     })
       .then(response => response.json())
       .then(json => {
+        console.log("facebook login: ", json);
         if (json.token) {
           dispatch(saveToken(json.token));
         }
@@ -88,7 +99,7 @@ function usernameLogin(username, password) {
       .then(response => response.json())
       .then(json => {
         if (json.token) {
-          dispatch(saveToken(json.token));
+          dispatch(saveToken(json.token, json.user.username));
         }
       })
       .catch(err => console.log(err));
@@ -200,7 +211,6 @@ function getExplore() {
 }
 
 function searchByTerm(searchTerm) {
-  console.log("searchByTerm fn: ", searchTerm);
   return async (dispatch, getState) => {
     const {
       user: { token }
@@ -248,10 +258,29 @@ function searchImages(token, searchTerm) {
     .then(json => json);
 }
 
+function getProfile(userId) {
+  return (dispatch, getState) => {
+    const {
+      user: { token }
+    } = getState();
+
+    fetch(`/users/${userId}/`, {
+      headers: {
+        Authorization: `JWT ${token}`,
+        "content-type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .then(json => dispatch(setProfile(json)));
+  };
+}
+
 // initial state
 const initialState = {
   isLoggedIn: localStorage.getItem("jwt") ? true : false,
   token: localStorage.getItem("jwt"),
+  username: localStorage.getItem("username"),
+  profile: {},
   usersList: [],
   imageList: []
 };
@@ -271,6 +300,8 @@ function reducer(state = initialState, action) {
       return applySetUnfollowUser(state, action);
     case "SET_IMAGE_LIST":
       return applySetImageList(state, action);
+    case "SET_PROFILE":
+      return applySetProfile(state, action);
     default:
       return state;
   }
@@ -278,11 +309,12 @@ function reducer(state = initialState, action) {
 
 // reducer function
 function applySetToken(state, action) {
-  const { token } = action;
+  const { token, username } = action;
   return {
     ...state,
     isLoggedIn: true,
-    token
+    token,
+    username
   };
 }
 
@@ -341,6 +373,14 @@ function applySetImageList(state, action) {
   };
 }
 
+function applySetProfile(state, action) {
+  const { profile } = action;
+  return {
+    ...state,
+    profile
+  };
+}
+
 // exports
 const actionCreators = {
   facebookLogin,
@@ -351,7 +391,8 @@ const actionCreators = {
   followUser,
   unfollowUser,
   getExplore,
-  searchByTerm
+  searchByTerm,
+  getProfile
 };
 export { actionCreators };
 
