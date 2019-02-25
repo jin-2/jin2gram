@@ -12,8 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getProfile: () => {
-      dispatch(userActions.getProfile("advisor"));
+    getProfile: username => {
+      dispatch(userActions.getProfile(username));
     }
   };
 };

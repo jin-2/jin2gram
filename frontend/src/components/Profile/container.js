@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import Profile from "./presenter";
 
 class Container extends Component {
+  state = {
+    loading: true
+  };
   static propTypes = {
     username: PropTypes.string,
     profile: PropTypes.object,
@@ -12,8 +15,17 @@ class Container extends Component {
     const { username, getProfile } = this.props;
     getProfile(username);
   }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile) {
+      this.setState({
+        loading: false
+      });
+    }
+  }
   render() {
-    return <Profile profile={this.props.profile} />;
+    return (
+      <Profile profile={this.props.profile} loading={this.state.loading} />
+    );
   }
 }
 
