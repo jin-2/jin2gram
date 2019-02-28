@@ -77,7 +77,8 @@ const ProfileTab = (props, context) => (
   <ul className={styles.tab}>
     <li className={styles.tabItem}>
       <IosGrid fontSize="16px" color="#535353" className={styles.icon} />
-      {context.t("POSTS")}
+      <IosGrid fontSize="26px" color="#535353" className={styles.iconBig} />
+      <span className={styles.text}>{context.t("POSTS")}</span>
     </li>
   </ul>
 );

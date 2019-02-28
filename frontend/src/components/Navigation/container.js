@@ -7,7 +7,8 @@ class Container extends Component {
     term: ""
   };
   static propTypes = {
-    goToSearch: PropTypes.func.isRequired
+    goToSearch: PropTypes.func.isRequired,
+    username: PropTypes.string.isRequired
   };
   render() {
     return (
@@ -15,6 +16,7 @@ class Container extends Component {
         value={this.state.term}
         handleInputChange={this._handleInputChange}
         handleSubmit={this._handleSubmit}
+        loginName={this.props.username}
       />
     );
   }

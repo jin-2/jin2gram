@@ -2,6 +2,13 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import Container from "./container";
 
+const mapStateToProps = (state, ownProps) => {
+  const { username } = state.user;
+  return {
+    username
+  };
+};
+
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     goToSearch: searchTerm => {
@@ -11,6 +18,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Container);

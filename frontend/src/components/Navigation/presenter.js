@@ -34,7 +34,7 @@ const Navigation = (props, context) => (
         <span className={styles.iconWrap}>
           <IconHeart fontSize="30px" color="#333" />
         </span>
-        <Link to="/profile" className={styles.iconWrap}>
+        <Link to={`/${props.loginName}`} className={styles.iconWrap}>
           <IconPerson fontSize="30px" color="#333" />
         </Link>
       </div>
