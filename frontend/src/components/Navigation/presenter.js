@@ -34,9 +34,9 @@ const Navigation = (props, context) => (
         <span className={styles.iconWrap}>
           <IconHeart fontSize="30px" color="#333" />
         </span>
-        <Link to={`/${props.loginName}`} className={styles.iconWrap}>
+        <span className={styles.iconWrap} onClick={props.goToProfile}>
           <IconPerson fontSize="30px" color="#333" />
-        </Link>
+        </span>
       </div>
     </header>
   </div>
@@ -49,7 +49,8 @@ Navigation.contextTypes = {
 Navigation.propTypes = {
   value: PropTypes.string.isRequired,
   handleInputChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  goToProfile: PropTypes.func.isRequired
 };
 
 export default Navigation;

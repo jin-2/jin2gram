@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     goToSearch: searchTerm => {
       dispatch(push(`/search/${searchTerm}`));
+    },
+    goToProfile: username => {
+      dispatch(push(`/${username}`));
     }
   };
 };

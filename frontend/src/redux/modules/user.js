@@ -258,19 +258,26 @@ function searchImages(token, searchTerm) {
     .then(json => json);
 }
 
-function getProfile(userId) {
+function getUsername(username) {
   return (dispatch, getState) => {
     const {
-      user: { token }
+      user: { token },
+      router: { location }
     } = getState();
 
-    fetch(`/users/${userId}/`, {
+    fetch(`/users/${username}/`, {
       headers: {
         Authorization: `JWT ${token}`,
         "content-type": "application/json"
       }
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.status === 404) {
+          location.pathname = "/";
+        } else {
+          return response.json();
+        }
+      })
       .then(json => dispatch(setProfile(json)));
   };
 }
@@ -392,7 +399,7 @@ const actionCreators = {
   unfollowUser,
   getExplore,
   searchByTerm,
-  getProfile
+  getUsername
 };
 export { actionCreators };
 

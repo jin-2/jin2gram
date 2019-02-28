@@ -3,17 +3,17 @@ import { actionCreators as userActions } from "../../redux/modules/user";
 import Container from "./container";
 
 const mapStateToProps = (state, ownProps) => {
-  const { username, profile } = state.user;
+  const { profile } = state.user;
   return {
-    username,
     profile
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  const { username } = ownProps.match.params;
   return {
-    getProfile: username => {
-      dispatch(userActions.getProfile(username));
+    getUsername: () => {
+      dispatch(userActions.getUsername(username));
     }
   };
 };

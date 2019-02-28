@@ -7,8 +7,9 @@ class Container extends Component {
     term: ""
   };
   static propTypes = {
+    username: PropTypes.string.isRequired,
     goToSearch: PropTypes.func.isRequired,
-    username: PropTypes.string.isRequired
+    goToProfile: PropTypes.func.isRequired
   };
   render() {
     return (
@@ -16,6 +17,7 @@ class Container extends Component {
         value={this.state.term}
         handleInputChange={this._handleInputChange}
         handleSubmit={this._handleSubmit}
+        goToProfile={this._goToProfile}
         loginName={this.props.username}
       />
     );
@@ -34,6 +36,10 @@ class Container extends Component {
     this.setState({
       term: ""
     });
+  };
+  _goToProfile = () => {
+    const { goToProfile, username } = this.props;
+    goToProfile(username);
   };
 }
 

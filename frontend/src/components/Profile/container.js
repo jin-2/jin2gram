@@ -7,13 +7,12 @@ class Container extends Component {
     loading: true
   };
   static propTypes = {
-    username: PropTypes.string,
     profile: PropTypes.object,
-    getProfile: PropTypes.func
+    getUsername: PropTypes.func
   };
   componentDidMount() {
-    const { username, getProfile } = this.props;
-    getProfile(username);
+    const { getUsername } = this.props;
+    getUsername();
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.profile) {
