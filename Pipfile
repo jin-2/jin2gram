@@ -35,7 +35,7 @@ djangorestframework-jwt = "*"
 django-taggit-serializer = "*"
 django-rest-auth = "*"
 django-cors-headers = "*"
-pillow = "==5.0.0"
+pillow = "==6.2.0"
 awsebcli = "*"
 
 [dev-packages]
